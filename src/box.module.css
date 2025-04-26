@@ -1,0 +1,14 @@
+.boxx{
+    height: min(15vw, 15vh);;
+    width: min(15vw, 15vh);;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    border-radius: 1vw;
+    font-size: min(10vw,10vh);
+    color: black;
+}
+.boxx:hover{
+    
+}
