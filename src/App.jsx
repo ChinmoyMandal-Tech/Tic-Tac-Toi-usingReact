@@ -15,7 +15,7 @@ function App() {
     [1, 4, 7],
     [2, 5, 8],
     [0, 3, 6]]
-  const [click, setclick] = useState([])
+  const [newButton, setnewButton] = useState(0)
   const [player, setplayer] = useState("X")
 
   const OnClickBox = (item, setDisabled) => {
@@ -47,23 +47,25 @@ function App() {
       if (boxContex[a] && boxContex[a] === boxContex[b] && boxContex[b] === boxContex[c]) {
         console.log(boxContex[a])
         // break
+        setnewButton(1)
         return 1
       }
       if (count === 9) {
-
+        setnewButton(1)
         console.log("Drow", count)
       }
     }
 
   }
 
-  return (
+  return (<center>
     <div className={styles.display}>
       <div className={styles.box}>
         {box.map((item) => <Box key={item} item={item} OnClickBox={OnClickBox}></Box>)}
       </div>
-
     </div>
+    {newButton===1 && <button className={styles.newbutton}>New Game</button>}
+    </center>
   )
 }
 

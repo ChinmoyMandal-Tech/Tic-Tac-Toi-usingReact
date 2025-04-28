@@ -13,3 +13,11 @@
     align-items: center;
     
 }
+
+.newbutton{
+    width: min(40vw, 40vh);
+    height: min(7vw, 7vh);
+    font-size: min(4vw,4vh);
+    border-radius: 1vw;
+    background-color: aqua;
+}
