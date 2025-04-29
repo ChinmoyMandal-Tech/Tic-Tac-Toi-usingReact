@@ -3,6 +3,7 @@ import styles from './App.module.css'
 import Box from './box'
 
 function App() {
+  const [allButton, setallButton] = useState('');
   const [count, setCount] = useState(0)
   const [boxContex, setboxContex] = useState(['', '', '', '', '', '', '', '', '']);
   const box = [0, 1, 2, 3, 4, 5, 6, 7, 8];
@@ -47,6 +48,7 @@ function App() {
       if (boxContex[a] && boxContex[a] === boxContex[b] && boxContex[b] === boxContex[c]) {
         console.log(boxContex[a])
         // break
+        setallButton('1')
         setnewButton(1)
         return 1
       }
@@ -61,7 +63,7 @@ function App() {
   return (<center>
     <div className={styles.display}>
       <div className={styles.box}>
-        {box.map((item) => <Box key={item} item={item} OnClickBox={OnClickBox}></Box>)}
+        {box.map((item) => <Box key={item} item={item} allButton = {allButton} OnClickBox={OnClickBox}></Box>)}
       </div>
     </div>
     {newButton===1 && <button className={styles.newbutton}>New Game</button>}
