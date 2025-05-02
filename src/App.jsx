@@ -72,6 +72,7 @@ function App() {
   }
 
   return (<center>
+    <div className={styles.tital}>Tic Tac Toi</div>
     <div className={styles.display}>
       <div className={styles.box}>
         {box.map((item) => <Box

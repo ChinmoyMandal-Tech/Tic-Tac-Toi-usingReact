@@ -7,14 +7,17 @@
     justify-content: space-evenly;
 }
 .display{
-    padding-top: min(6vw, 6vh);
+    /* padding-top: min(6vw, 6vh); */
     height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
     
 }
-
+.tital{
+    padding-top: min(3vw, 3vh);
+    font-size: min(7vw, 7vh);
+}
 .newbutton{
     width: min(40vw, 40vh);
     height: min(7vw, 7vh);
