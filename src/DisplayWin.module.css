@@ -1,0 +1,5 @@
+.win{
+    height: min(10vw, 10vh);
+    width: min(10vw, 10vh);
+    font-size: min(5vw, 5vh);
+}

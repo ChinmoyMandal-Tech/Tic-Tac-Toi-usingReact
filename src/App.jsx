@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import styles from './App.module.css'
 import Box from './box'
+import DispayWin from './DisplayWin';
 
 function App() {
   const [allButton, setallButton] = useState('');
@@ -79,6 +80,7 @@ function App() {
         />)}
       </div>
     </div>
+    <DispayWin />
     {newButton === 1 && <button className={styles.newbutton} onClick={() => newGame()}>New Game</button>}
   </center>
   )
