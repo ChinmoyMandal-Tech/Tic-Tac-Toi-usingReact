@@ -1,8 +1,8 @@
 import styles from './DisplayWin.module.css'
-function DispayWin() {
+function DispayWin({gameResult}) {
 
     return <div className={styles.win}>
-    hello
+        {(gameResult.length===1) ? `winer is ${gameResult}` : `Game is Draw`}
     </div>
     
 }

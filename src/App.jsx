@@ -20,6 +20,7 @@ function App() {
     [0, 3, 6]]
   const [newButton, setnewButton] = useState(0)
   const [player, setplayer] = useState("X")
+  const [gameResult, setgameResult] = useState('');
   
 
   const OnClickBox = (item) => {
@@ -41,6 +42,7 @@ function App() {
       const [a, b, c] = winer[i];
       if (newContext[a] && newContext[a] === newContext[b] && newContext[b] === newContext[c]) {
         console.log(`Winner: ${newContext[a]}`);
+        setgameResult(newContext[a])
         setallButton('1');
         setnewButton(1);
         return;
@@ -49,6 +51,7 @@ function App() {
 
     if (newCount === 9) {
       console.log("Draw");
+      setgameResult("Draw")
       setnewButton(1);
     }
 
@@ -60,6 +63,7 @@ function App() {
     setallButton('')
     setnewButton(0)
     setCount(0);
+    setgameResult('')
     let i
     for (i = 0; i < 9; i++) {
       boxContex[i] = ''
@@ -80,7 +84,7 @@ function App() {
         />)}
       </div>
     </div>
-    <DispayWin />
+    {gameResult.length >= 1 &&<DispayWin gameResult={gameResult} />}
     {newButton === 1 && <button className={styles.newbutton} onClick={() => newGame()}>New Game</button>}
   </center>
   )

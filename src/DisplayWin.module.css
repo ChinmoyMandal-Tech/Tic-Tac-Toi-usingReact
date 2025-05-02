@@ -1,5 +1,6 @@
 .win{
     height: min(10vw, 10vh);
-    width: min(10vw, 10vh);
-    font-size: min(5vw, 5vh);
+    /* width: min(10vw, 10vh); */
+    font-size: min(7vw, 7vh);
+    padding-bottom: min(4vw, 4vh);
 }
