@@ -1,0 +1,15 @@
+.leaderboard{
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    margin: min(5vh,5vw);
+}
+
+.box{
+    height: min(5vw,5vh);
+    width: min(20vw, 20vh);
+    font-size: min(5vw, 5vh);
+    margin-right: min(3vh,3vw);
+    margin-left: min(3vh, 3vw);
+    /* align-items: center; */
+}

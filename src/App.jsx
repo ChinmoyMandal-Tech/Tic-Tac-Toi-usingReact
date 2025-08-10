@@ -2,6 +2,7 @@ import { useState } from 'react'
 import styles from './App.module.css'
 import Box from './box'
 import DispayWin from './DisplayWin';
+import LeaderBord from './LeaderBord';
 
 function App() {
   const [allButton, setallButton] = useState('');
@@ -21,7 +22,7 @@ function App() {
   const [newButton, setnewButton] = useState(0)
   const [player, setplayer] = useState("X")
   const [gameResult, setgameResult] = useState('');
-  
+
 
   const OnClickBox = (item) => {
     const BoxId = item.target.id;
@@ -45,6 +46,7 @@ function App() {
         setgameResult(newContext[a])
         setallButton('1');
         setnewButton(1);
+        xy(newContext[a]);
         return;
       }
     }
@@ -58,6 +60,9 @@ function App() {
     setplayer(player === "X" ? "O" : "X");
   };
 
+  const xy = () => {
+    
+  }
 
   const newGame = () => {
     setallButton('')
@@ -73,6 +78,7 @@ function App() {
 
   return (<center>
     <div className={styles.tital}>Tic Tac Toi</div>
+    <LeaderBord xy={xy} />
     <div className={styles.display}>
       <div className={styles.box}>
         {box.map((item) => <Box
@@ -85,7 +91,7 @@ function App() {
         />)}
       </div>
     </div>
-    {gameResult.length >= 1 &&<DispayWin gameResult={gameResult} />}
+    {gameResult.length >= 1 && <DispayWin gameResult={gameResult} />}
     {newButton === 1 && <button className={styles.newbutton} onClick={() => newGame()}>New Game</button>}
   </center>
   )
