@@ -26,6 +26,7 @@
     font-size: min(3vw, 3vh);
     border-radius: 1vw;
     background-color: aqua;
+    cursor: pointer;
 }
 
 .resetbutton {
@@ -35,4 +36,5 @@
     font-size: min(3vw, 3vh);
     border-radius: 1vw;
     background-color: rgb(252, 117, 20);
+    cursor: pointer;
 }

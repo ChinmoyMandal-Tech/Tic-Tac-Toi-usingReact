@@ -43,6 +43,7 @@ function App() {
       console.log("yes");
       localStorage.removeItem("tic-tac-toi");
       setleaderboard({ 1: 0, 2: 0 });
+      newGame();
     }
   }
 
