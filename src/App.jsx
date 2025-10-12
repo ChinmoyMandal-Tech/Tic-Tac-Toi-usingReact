@@ -1,10 +1,52 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import styles from './App.module.css'
 import Box from './box'
 import DispayWin from './DisplayWin';
 import LeaderBord from './LeaderBord';
 
 function App() {
+
+  const [inputData, setInputData] = useState("");
+  const [serverData, setServerData] = useState([])
+  const socketRef = useRef(null);
+  useEffect(() => {
+    const socket = new WebSocket("ws://localhost:5000");
+    socketRef.current = socket;
+    socket.onopen = () => {
+      console.log("✅ Connected to WebSocket server");
+    };
+
+    socket.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+      console.log("📩 Received:", data);
+      if (data.type === "data") {
+        setServerData(data.data)
+      }
+    };
+
+    socket.onerror = (error) => {
+      console.error("WebSocket error:", error);
+    };
+
+    socket.onclose = () => {
+      console.log("❌ WebSocket connection closed");
+    };
+
+    // Cleanup on unmount
+    return () => {
+      socket.close();
+    };
+  }, []);
+  const sendData = () => {
+    if (inputData.trim() === "") return;
+    if (socketRef.current && socketRef.current.readyState === WebSocket.OPEN) {
+      socketRef.current.send(JSON.stringify({ InputData: inputData }));
+      setInputData("");
+    } else {
+      console.warn("⚠️ WebSocket not open");
+    }
+}
+
   const [allButton, setallButton] = useState('');
   const [count, setCount] = useState(0);
   const [boxContex, setboxContex] = useState(['', '', '', '', '', '', '', '', '']);
@@ -115,7 +157,9 @@ function App() {
     }
   }
 
-  return (<center>
+  return (
+    <>
+      <center>
     <div className={styles.tital}>Tic Tac Toi</div>
     <LeaderBord result={leaderboard} />
     <div className={styles.display}>
@@ -133,7 +177,11 @@ function App() {
     {gameResult.length >= 1 && <DispayWin gameResult={gameResult} />}
     <button className={styles.newbutton} onClick={() => newGame()}>New Game</button>
     <button className={styles.resetbutton} onClick={() => ResetGame()}>Reset Game</button>
-  </center>
+      </center>
+      {/* chat section */}
+      <center>{serverData && serverData.map((d, index) => <p key={index}>{d}</p>)}<input value={inputData} onKeyDown={(e) => e.key==="Enter"?sendData():""} onChange={(e) => setInputData(e.target.value)} placeholder='type here'/>
+      <button onClick={sendData}>Send</button></center> 
+    </>
   )
 }
 
